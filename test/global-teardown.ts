@@ -11,7 +11,7 @@ export = async function globalTeardown() {
     await instance.stop();
   }
 
-  const client = new MongoClient(process.env.DATABASE_URL);
+  const client = new MongoClient(process.env.DATABASE_URL!);
 
   client.close();
 };
