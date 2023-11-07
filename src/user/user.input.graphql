@@ -1,0 +1,35 @@
+input SignUpInput {
+  firstName: String!
+  lastName: String!
+  dateOfBirth: String!
+  userName: String!
+  password: String!
+  profileImage: String
+  phoneNumber: PhoneNumber!
+  firebaseUserId: String!
+}
+
+input SignInInput {
+  userName: String!
+  password: String!
+}
+
+type SignInResponse {
+  token: String!
+  refreshToken: String!
+  status: String!
+}
+
+input UpdatePasswordInput {
+  resetPassword: Boolean
+  firebaseUserId: String
+  newPassword: Password! @validation(trim: true)
+  oldPassword: Password @validation(trim: true)
+}
+
+type UserQueryArgs {
+  _id: String
+  userName: String
+  phoneNumber: PhoneNumber
+  firebaseUserId: String
+}

@@ -1,0 +1,5 @@
+.husky
+.*ignore
+yarn.lock
+dist/
+coverage/

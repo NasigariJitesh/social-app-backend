@@ -1,0 +1,8 @@
+type Post
+  @key(fields: "_id")
+  @entity(additionalFields: [{ path: "createdAt", type: "Date" }, { path: "updatedAt?", type: "Maybe<Date>" }]) {
+  _id: ID! @id
+  content: String! @column
+  likes: [User!] @column
+  creator: User! @column
+}

@@ -1,0 +1,35 @@
+name: Code Coverage
+
+on:
+  pull_request:
+    branches:
+      - main
+    types: [opened, reopened, synchronize]
+
+jobs:
+  coverage:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+      - uses: actions/setup-node@v2 # --> To Setup the Server With Node Env
+        with:
+          node-version: '16' #--> Specify the Version of the Node
+
+      - name: Install dependencies
+        run: yarn
+
+      - name: Build
+        run: yarn build
+
+      - name: Testing
+        uses: ArtiomTr/jest-coverage-report-action@v2
+        with:
+          skip: install
+          package-manager: yarn
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          test-script: yarn test --ci --json --coverage --testLocationInResults --outputFile=report.json
+      - uses: mattallty/jest-github-action@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          test-command: 'yarn test:coverage'

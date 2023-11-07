@@ -1,0 +1,60 @@
+type UserVerification {
+  phoneNumber: Boolean!
+}
+
+type User
+  @shareable
+  @key(fields: "_id")
+  @key(fields: "_id userName")
+  @entity(
+    additionalFields: [
+      { path: "createdAt", type: "Date" }
+      { path: "updatedAt?", type: "Maybe<Date>" }
+      { path: "password", type: "string" }
+    ]
+  ) {
+  _id: ID! @id
+  firstName: String! @column
+  lastName: String! @column
+  dateOfBirth: DateTime! @column
+  userName: String! @column
+  lastLogin: LogInActivity
+  loginHistory: [LogInActivity!]
+  profileImage: String @column
+  friends: [User!] @column
+  phoneNumber: PhoneNumber! @column
+  verification: UserVerification! @column
+  firebaseUserId: String! @column
+  posts: [Post!] @column
+  notifications: [Activity!]
+}
+
+type Activity
+  @key(fields: "_id")
+  @entity(additionalFields: [{ path: "createdAt", type: "Date" }, { path: "updatedAt?", type: "Maybe<Date>" }]) {
+  _id: ID! @id
+  type: String! @column
+  user: User! @column
+  payload: JSON @column
+}
+
+type LogInActivity
+  @key(fields: "_id")
+  @entity(additionalFields: [{ path: "createdAt", type: "Date" }, { path: "updatedAt?", type: "Maybe<Date>" }]) {
+  _id: ID! @id
+  timestamp: DateTime! @column
+  userId: ID! @column
+}
+
+extend type Query {
+  getUser(where: UserQueryArgs!): User!
+}
+
+extend type Mutation {
+  signUp(input: SignUpInput!): String!
+  signIn(input: SignInInput!): SignInResponse!
+  sendFriendRequest(toUserId: String!): Activity!
+  updatePassword(_id: String!, input: UpdatePasswordInput!): User
+  verifyPhoneNumber(_id: String!): User
+  refreshToken(token: String!): SignInResponse!
+}
