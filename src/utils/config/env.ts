@@ -8,7 +8,7 @@ export const env = {
 
   JWT_SECRET: process.env.JWT_SECRET!,
   JWT_REFRESH_SECRET: process.env.JWT_REFRESH_SECRET!,
-
+  DB_NAME: 'cognochain-task',
   DATABASE_URL: process.env.DATABASE_URL!,
   USER_COLLECTION: 'user',
   LOGIN_ACTIVITY_COLLECTION: 'login_activity',

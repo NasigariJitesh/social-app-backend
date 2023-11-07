@@ -1,10 +1,10 @@
 /* eslint-disable unicorn/prefer-module */
-import path from 'path';
 import { ApolloServer } from '@apollo/server';
 import { buildSubgraphSchema } from '@apollo/subgraph';
 import { loadFilesSync } from '@graphql-tools/load-files';
 import { mergeResolvers, mergeTypeDefs } from '@graphql-tools/merge';
 import { gql } from 'graphql-tag';
+import path from 'path';
 
 import { authorizationDirectiveTransformer } from '../../common/directives/directives.resolver';
 import { plugins } from '../functions/plugins';
