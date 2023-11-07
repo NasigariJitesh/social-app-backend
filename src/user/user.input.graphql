@@ -27,7 +27,7 @@ input UpdatePasswordInput {
   oldPassword: Password @validation(trim: true)
 }
 
-type UserQueryArgs {
+input UserQueryArgs {
   _id: String
   userName: String
   phoneNumber: PhoneNumber
