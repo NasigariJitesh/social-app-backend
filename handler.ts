@@ -1,7 +1,6 @@
 import { handlers, startServerAndCreateLambdaHandler } from '@as-integrations/aws-lambda';
 
 import { server } from './src/utils/config/server-config';
-import { getUserFromHeader } from './src/utils/config/user';
 import { db } from './src/utils/functions/db';
 import { Context } from './src/utils/types/context';
 
@@ -10,9 +9,9 @@ export const graphqlHandler = startServerAndCreateLambdaHandler(
   handlers.createAPIGatewayProxyEventV2RequestHandler(),
   {
     context: async (context) => {
-      const user = getUserFromHeader(context.event.headers['x-user']);
+      const { user } = context.event.headers;
 
-      return { db, user } satisfies Context;
+      return { db, user: user as never } satisfies Context;
     },
   }
 );

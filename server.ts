@@ -12,7 +12,7 @@ const start = async () => {
     context: async (context) => {
       const user = context.req.headers.authorization ? User.authenticate(context.req.headers.authorization) : null;
 
-      return { ...context, db, user } satisfies Context;
+      return { db, user } satisfies Context;
     },
     listen: { port: +env.PORT },
   });
