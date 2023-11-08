@@ -117,7 +117,7 @@ const updatePassword = async (_id: string, userInput: UpdatePasswordInput) => {
 
   if (updatedUser.ok !== 1 || !updatedUser.value) throw new ApolloError('Error updating password');
 
-  return updatedUser.value satisfies UserInDb;
+  return serializeInput(sanitize(updatedUser.value)) satisfies UserInDb;
 };
 
 /**
@@ -190,7 +190,7 @@ const authenticate = (token: string) => {
 const signIn = async (signInInput: SignInInput) => {
   const input = SignInInputSchema().parse(signInInput);
 
-  const user = await findOne({ userName: input.userName });
+  const user = await userCollection.findOne({ userName: input.userName });
   if (!user) throw new UserInputError('User not found');
 
   // check if the user even has a password field

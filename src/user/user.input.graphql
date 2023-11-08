@@ -6,6 +6,7 @@ input SignUpInput {
   profileImage: String
   phoneNumber: PhoneNumber!
   firebaseUserId: String!
+  about: String
 }
 
 input SignInInput {

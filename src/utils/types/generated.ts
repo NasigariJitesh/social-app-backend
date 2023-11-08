@@ -124,6 +124,7 @@ export type SignInResponse = {
 };
 
 export type SignUpInput = {
+  about?: InputMaybe<Scalars['String']>;
   firebaseUserId: Scalars['String'];
   firstName: Scalars['String'];
   lastName: Scalars['String'];
@@ -518,6 +519,7 @@ export function SignInInputSchema(): z.ZodObject<Properties<SignInInput>> {
 
 export function SignUpInputSchema(): z.ZodObject<Properties<SignUpInput>> {
   return z.object<Properties<SignUpInput>>({
+    about: z.string().nullish(),
     firebaseUserId: z.string(),
     firstName: z.string(),
     lastName: z.string(),
@@ -684,6 +686,7 @@ export type UserInDb = {
 
 /**
  * @typedef {Object} SignUpInput
+ * @property {string} [about]
  * @property {string} firebaseUserId
  * @property {string} firstName
  * @property {string} lastName
