@@ -16,7 +16,6 @@ type User
   _id: ID! @id
   firstName: String! @column
   lastName: String! @column
-  dateOfBirth: DateTime! @column
   userName: String! @column
   lastLogin: LogInActivity
   loginHistory: [LogInActivity!]

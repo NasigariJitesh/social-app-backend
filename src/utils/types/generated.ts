@@ -2,7 +2,7 @@
 /*  eslint-disable */
 import { GraphQLResolveInfo, GraphQLScalarType, GraphQLScalarTypeConfig } from 'graphql';
 import { Context } from './context';
-import { z } from 'zod';
+import { z } from 'zod'
 import { PhoneNumber } from 'libphonenumber-js';
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
@@ -58,26 +58,32 @@ export type Mutation = {
   verifyPhoneNumber?: Maybe<User>;
 };
 
+
 export type MutationRefreshTokenArgs = {
   token: Scalars['String'];
 };
+
 
 export type MutationSendFriendRequestArgs = {
   toUserId: Scalars['String'];
 };
 
+
 export type MutationSignInArgs = {
   input: SignInInput;
 };
+
 
 export type MutationSignUpArgs = {
   input: SignUpInput;
 };
 
+
 export type MutationUpdatePasswordArgs = {
   _id: Scalars['String'];
   input: UpdatePasswordInput;
 };
+
 
 export type MutationVerifyPhoneNumberArgs = {
   _id: Scalars['String'];
@@ -96,11 +102,14 @@ export type Query = {
   getUser: User;
 };
 
+
 export type QueryGetUserArgs = {
   where: UserQueryArgs;
 };
 
-export type Role = 'ADMIN' | 'USER';
+export type Role =
+  | 'ADMIN'
+  | 'USER';
 
 export type SignInInput = {
   password: Scalars['String'];
@@ -115,7 +124,6 @@ export type SignInResponse = {
 };
 
 export type SignUpInput = {
-  dateOfBirth: Scalars['String'];
   firebaseUserId: Scalars['String'];
   firstName: Scalars['String'];
   lastName: Scalars['String'];
@@ -136,7 +144,6 @@ export type User = {
   __typename?: 'User';
   _id: Scalars['ID'];
   about?: Maybe<Scalars['String']>;
-  dateOfBirth: Scalars['DateTime'];
   firebaseUserId: Scalars['String'];
   firstName: Scalars['String'];
   friends?: Maybe<Array<User>>;
@@ -168,14 +175,15 @@ export type AdditionalEntityFields = {
   type?: InputMaybe<Scalars['String']>;
 };
 
+
+
 export type ResolverTypeWrapper<T> = Promise<T> | T;
+
 
 export type ResolverWithResolve<TResult, TParent, TContext, TArgs> = {
   resolve: ResolverFn<TResult, TParent, TContext, TArgs>;
 };
-export type Resolver<TResult, TParent = {}, TContext = {}, TArgs = {}> =
-  | ResolverFn<TResult, TParent, TContext, TArgs>
-  | ResolverWithResolve<TResult, TParent, TContext, TArgs>;
+export type Resolver<TResult, TParent = {}, TContext = {}, TArgs = {}> = ResolverFn<TResult, TParent, TContext, TArgs> | ResolverWithResolve<TResult, TParent, TContext, TArgs>;
 
 export type ResolverFn<TResult, TParent, TContext, TArgs> = (
   parent: TParent,
@@ -222,11 +230,7 @@ export type TypeResolveFn<TTypes, TParent = {}, TContext = {}> = (
   info: GraphQLResolveInfo
 ) => Maybe<TTypes> | Promise<Maybe<TTypes>>;
 
-export type IsTypeOfResolverFn<T = {}, TContext = {}> = (
-  obj: T,
-  context: TContext,
-  info: GraphQLResolveInfo
-) => boolean | Promise<boolean>;
+export type IsTypeOfResolverFn<T = {}, TContext = {}> = (obj: T, context: TContext, info: GraphQLResolveInfo) => boolean | Promise<boolean>;
 
 export type NextResolverFn<T> = () => Promise<T>;
 
@@ -237,6 +241,8 @@ export type DirectiveResolverFn<TResult = {}, TParent = {}, TContext = {}, TArgs
   context: TContext,
   info: GraphQLResolveInfo
 ) => TResult | Promise<TResult>;
+
+
 
 /** Mapping between all available schema types and the resolvers types */
 export type ResolversTypes = {
@@ -299,50 +305,25 @@ export type AuthDirectiveArgs = {
   requires?: Maybe<Role>;
 };
 
-export type AuthDirectiveResolver<
-  Result,
-  Parent,
-  ContextType = Context,
-  Args = AuthDirectiveArgs
-> = DirectiveResolverFn<Result, Parent, ContextType, Args>;
+export type AuthDirectiveResolver<Result, Parent, ContextType = Context, Args = AuthDirectiveArgs> = DirectiveResolverFn<Result, Parent, ContextType, Args>;
 
 export type ColumnDirectiveArgs = {
   overrideType?: Maybe<Scalars['String']>;
 };
 
-export type ColumnDirectiveResolver<
-  Result,
-  Parent,
-  ContextType = Context,
-  Args = ColumnDirectiveArgs
-> = DirectiveResolverFn<Result, Parent, ContextType, Args>;
+export type ColumnDirectiveResolver<Result, Parent, ContextType = Context, Args = ColumnDirectiveArgs> = DirectiveResolverFn<Result, Parent, ContextType, Args>;
 
-export type EmbeddedDirectiveArgs = {};
+export type EmbeddedDirectiveArgs = { };
 
-export type EmbeddedDirectiveResolver<
-  Result,
-  Parent,
-  ContextType = Context,
-  Args = EmbeddedDirectiveArgs
-> = DirectiveResolverFn<Result, Parent, ContextType, Args>;
+export type EmbeddedDirectiveResolver<Result, Parent, ContextType = Context, Args = EmbeddedDirectiveArgs> = DirectiveResolverFn<Result, Parent, ContextType, Args>;
 
-export type ExternalDirectiveArgs = {};
+export type ExternalDirectiveArgs = { };
 
-export type ExternalDirectiveResolver<
-  Result,
-  Parent,
-  ContextType = Context,
-  Args = ExternalDirectiveArgs
-> = DirectiveResolverFn<Result, Parent, ContextType, Args>;
+export type ExternalDirectiveResolver<Result, Parent, ContextType = Context, Args = ExternalDirectiveArgs> = DirectiveResolverFn<Result, Parent, ContextType, Args>;
 
-export type IdDirectiveArgs = {};
+export type IdDirectiveArgs = { };
 
-export type IdDirectiveResolver<Result, Parent, ContextType = Context, Args = IdDirectiveArgs> = DirectiveResolverFn<
-  Result,
-  Parent,
-  ContextType,
-  Args
->;
+export type IdDirectiveResolver<Result, Parent, ContextType = Context, Args = IdDirectiveArgs> = DirectiveResolverFn<Result, Parent, ContextType, Args>;
 
 export type ValidationDirectiveArgs = {
   default?: Maybe<Scalars['String']>;
@@ -354,75 +335,42 @@ export type ValidationDirectiveArgs = {
   typeOf?: Maybe<Scalars['String']>;
 };
 
-export type ValidationDirectiveResolver<
-  Result,
-  Parent,
-  ContextType = Context,
-  Args = ValidationDirectiveArgs
-> = DirectiveResolverFn<Result, Parent, ContextType, Args>;
+export type ValidationDirectiveResolver<Result, Parent, ContextType = Context, Args = ValidationDirectiveArgs> = DirectiveResolverFn<Result, Parent, ContextType, Args>;
 
 export type UnionDirectiveArgs = {
   discriminatorField?: Maybe<Scalars['String']>;
   additionalFields?: Maybe<Array<Maybe<AdditionalEntityFields>>>;
 };
 
-export type UnionDirectiveResolver<
-  Result,
-  Parent,
-  ContextType = Context,
-  Args = UnionDirectiveArgs
-> = DirectiveResolverFn<Result, Parent, ContextType, Args>;
+export type UnionDirectiveResolver<Result, Parent, ContextType = Context, Args = UnionDirectiveArgs> = DirectiveResolverFn<Result, Parent, ContextType, Args>;
 
 export type AbstractEntityDirectiveArgs = {
   discriminatorField: Scalars['String'];
   additionalFields?: Maybe<Array<Maybe<AdditionalEntityFields>>>;
 };
 
-export type AbstractEntityDirectiveResolver<
-  Result,
-  Parent,
-  ContextType = Context,
-  Args = AbstractEntityDirectiveArgs
-> = DirectiveResolverFn<Result, Parent, ContextType, Args>;
+export type AbstractEntityDirectiveResolver<Result, Parent, ContextType = Context, Args = AbstractEntityDirectiveArgs> = DirectiveResolverFn<Result, Parent, ContextType, Args>;
 
 export type EntityDirectiveArgs = {
   embedded?: Maybe<Scalars['Boolean']>;
   additionalFields?: Maybe<Array<Maybe<AdditionalEntityFields>>>;
 };
 
-export type EntityDirectiveResolver<
-  Result,
-  Parent,
-  ContextType = Context,
-  Args = EntityDirectiveArgs
-> = DirectiveResolverFn<Result, Parent, ContextType, Args>;
+export type EntityDirectiveResolver<Result, Parent, ContextType = Context, Args = EntityDirectiveArgs> = DirectiveResolverFn<Result, Parent, ContextType, Args>;
 
 export type LinkDirectiveArgs = {
   overrideType?: Maybe<Scalars['String']>;
 };
 
-export type LinkDirectiveResolver<
-  Result,
-  Parent,
-  ContextType = Context,
-  Args = LinkDirectiveArgs
-> = DirectiveResolverFn<Result, Parent, ContextType, Args>;
+export type LinkDirectiveResolver<Result, Parent, ContextType = Context, Args = LinkDirectiveArgs> = DirectiveResolverFn<Result, Parent, ContextType, Args>;
 
 export type MapDirectiveArgs = {
   path: Scalars['String'];
 };
 
-export type MapDirectiveResolver<Result, Parent, ContextType = Context, Args = MapDirectiveArgs> = DirectiveResolverFn<
-  Result,
-  Parent,
-  ContextType,
-  Args
->;
+export type MapDirectiveResolver<Result, Parent, ContextType = Context, Args = MapDirectiveArgs> = DirectiveResolverFn<Result, Parent, ContextType, Args>;
 
-export type ActivityResolvers<
-  ContextType = Context,
-  ParentType extends ResolversParentTypes['Activity'] = ResolversParentTypes['Activity']
-> = {
+export type ActivityResolvers<ContextType = Context, ParentType extends ResolversParentTypes['Activity'] = ResolversParentTypes['Activity']> = {
   _id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
   payload?: Resolver<Maybe<ResolversTypes['JSON']>, ParentType, ContextType>;
   type?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
@@ -442,51 +390,20 @@ export interface JsonScalarConfig extends GraphQLScalarTypeConfig<ResolversTypes
   name: 'JSON';
 }
 
-export type LogInActivityResolvers<
-  ContextType = Context,
-  ParentType extends ResolversParentTypes['LogInActivity'] = ResolversParentTypes['LogInActivity']
-> = {
+export type LogInActivityResolvers<ContextType = Context, ParentType extends ResolversParentTypes['LogInActivity'] = ResolversParentTypes['LogInActivity']> = {
   _id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
   timestamp?: Resolver<ResolversTypes['DateTime'], ParentType, ContextType>;
   userId?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
-export type MutationResolvers<
-  ContextType = Context,
-  ParentType extends ResolversParentTypes['Mutation'] = ResolversParentTypes['Mutation']
-> = {
-  refreshToken?: Resolver<
-    ResolversTypes['SignInResponse'],
-    ParentType,
-    ContextType,
-    RequireFields<MutationRefreshTokenArgs, 'token'>
-  >;
-  sendFriendRequest?: Resolver<
-    ResolversTypes['Activity'],
-    ParentType,
-    ContextType,
-    RequireFields<MutationSendFriendRequestArgs, 'toUserId'>
-  >;
-  signIn?: Resolver<
-    ResolversTypes['SignInResponse'],
-    ParentType,
-    ContextType,
-    RequireFields<MutationSignInArgs, 'input'>
-  >;
+export type MutationResolvers<ContextType = Context, ParentType extends ResolversParentTypes['Mutation'] = ResolversParentTypes['Mutation']> = {
+  refreshToken?: Resolver<ResolversTypes['SignInResponse'], ParentType, ContextType, RequireFields<MutationRefreshTokenArgs, 'token'>>;
+  sendFriendRequest?: Resolver<ResolversTypes['Activity'], ParentType, ContextType, RequireFields<MutationSendFriendRequestArgs, 'toUserId'>>;
+  signIn?: Resolver<ResolversTypes['SignInResponse'], ParentType, ContextType, RequireFields<MutationSignInArgs, 'input'>>;
   signUp?: Resolver<ResolversTypes['String'], ParentType, ContextType, RequireFields<MutationSignUpArgs, 'input'>>;
-  updatePassword?: Resolver<
-    Maybe<ResolversTypes['User']>,
-    ParentType,
-    ContextType,
-    RequireFields<MutationUpdatePasswordArgs, '_id' | 'input'>
-  >;
-  verifyPhoneNumber?: Resolver<
-    Maybe<ResolversTypes['User']>,
-    ParentType,
-    ContextType,
-    RequireFields<MutationVerifyPhoneNumberArgs, '_id'>
-  >;
+  updatePassword?: Resolver<Maybe<ResolversTypes['User']>, ParentType, ContextType, RequireFields<MutationUpdatePasswordArgs, '_id' | 'input'>>;
+  verifyPhoneNumber?: Resolver<Maybe<ResolversTypes['User']>, ParentType, ContextType, RequireFields<MutationVerifyPhoneNumberArgs, '_id'>>;
 };
 
 export interface PasswordScalarConfig extends GraphQLScalarTypeConfig<ResolversTypes['Password'], any> {
@@ -497,10 +414,7 @@ export interface PhoneNumberScalarConfig extends GraphQLScalarTypeConfig<Resolve
   name: 'PhoneNumber';
 }
 
-export type PostResolvers<
-  ContextType = Context,
-  ParentType extends ResolversParentTypes['Post'] = ResolversParentTypes['Post']
-> = {
+export type PostResolvers<ContextType = Context, ParentType extends ResolversParentTypes['Post'] = ResolversParentTypes['Post']> = {
   _id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
   content?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   creator?: Resolver<ResolversTypes['User'], ParentType, ContextType>;
@@ -512,17 +426,11 @@ export interface PostalCodeScalarConfig extends GraphQLScalarTypeConfig<Resolver
   name: 'PostalCode';
 }
 
-export type QueryResolvers<
-  ContextType = Context,
-  ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']
-> = {
+export type QueryResolvers<ContextType = Context, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = {
   getUser?: Resolver<ResolversTypes['User'], ParentType, ContextType, RequireFields<QueryGetUserArgs, 'where'>>;
 };
 
-export type SignInResponseResolvers<
-  ContextType = Context,
-  ParentType extends ResolversParentTypes['SignInResponse'] = ResolversParentTypes['SignInResponse']
-> = {
+export type SignInResponseResolvers<ContextType = Context, ParentType extends ResolversParentTypes['SignInResponse'] = ResolversParentTypes['SignInResponse']> = {
   refreshToken?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   status?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   token?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
@@ -533,13 +441,9 @@ export interface UrlScalarConfig extends GraphQLScalarTypeConfig<ResolversTypes[
   name: 'URL';
 }
 
-export type UserResolvers<
-  ContextType = Context,
-  ParentType extends ResolversParentTypes['User'] = ResolversParentTypes['User']
-> = {
+export type UserResolvers<ContextType = Context, ParentType extends ResolversParentTypes['User'] = ResolversParentTypes['User']> = {
   _id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
   about?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
-  dateOfBirth?: Resolver<ResolversTypes['DateTime'], ParentType, ContextType>;
   firebaseUserId?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   firstName?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   friends?: Resolver<Maybe<Array<ResolversTypes['User']>>, ParentType, ContextType>;
@@ -555,10 +459,7 @@ export type UserResolvers<
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
-export type UserVerificationResolvers<
-  ContextType = Context,
-  ParentType extends ResolversParentTypes['UserVerification'] = ResolversParentTypes['UserVerification']
-> = {
+export type UserVerificationResolvers<ContextType = Context, ParentType extends ResolversParentTypes['UserVerification'] = ResolversParentTypes['UserVerification']> = {
   phoneNumber?: Resolver<ResolversTypes['Boolean'], ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
@@ -595,6 +496,7 @@ export type DirectiveResolvers<ContextType = Context> = {
   map?: MapDirectiveResolver<any, any, ContextType>;
 };
 
+
 type Properties<T> = Required<{
   [K in keyof T]: z.ZodType<T[K], any, T[K]>;
 }>;
@@ -610,37 +512,29 @@ export const RoleSchema = z.enum(['ADMIN', 'USER']);
 export function SignInInputSchema(): z.ZodObject<Properties<SignInInput>> {
   return z.object<Properties<SignInInput>>({
     password: z.string(),
-    userName: z.string(),
-  });
+    userName: z.string()
+  })
 }
 
 export function SignUpInputSchema(): z.ZodObject<Properties<SignUpInput>> {
   return z.object<Properties<SignUpInput>>({
-    dateOfBirth: z.string(),
     firebaseUserId: z.string(),
     firstName: z.string(),
     lastName: z.string(),
     password: z.string(),
     phoneNumber: z.custom<PhoneNumber>((value) => value),
     profileImage: z.string().nullish(),
-    userName: z.string(),
-  });
+    userName: z.string()
+  })
 }
 
 export function UpdatePasswordInputSchema(): z.ZodObject<Properties<UpdatePasswordInput>> {
   return z.object<Properties<UpdatePasswordInput>>({
     firebaseUserId: z.string().nullish(),
-    newPassword: z
-      .string()
-      .regex(/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?\d)(?=.*?[!#$%&*?@^-]).{8,}$/)
-      .trim(),
-    oldPassword: z
-      .string()
-      .regex(/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?\d)(?=.*?[!#$%&*?@^-]).{8,}$/)
-      .trim()
-      .nullish(),
-    resetPassword: z.boolean().nullish(),
-  });
+    newPassword: z.string().regex(/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?\d)(?=.*?[!#$%&*?@^-]).{8,}$/).trim(),
+    oldPassword: z.string().regex(/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?\d)(?=.*?[!#$%&*?@^-]).{8,}$/).trim().nullish(),
+    resetPassword: z.boolean().nullish()
+  })
 }
 
 export function UserQueryArgsSchema(): z.ZodObject<Properties<UserQueryArgs>> {
@@ -648,59 +542,59 @@ export function UserQueryArgsSchema(): z.ZodObject<Properties<UserQueryArgs>> {
     _id: z.string().nullish(),
     firebaseUserId: z.string().nullish(),
     phoneNumber: z.custom<PhoneNumber>((value) => value).nullish(),
-    userName: z.string().nullish(),
-  });
+    userName: z.string().nullish()
+  })
 }
 
 export function AdditionalEntityFieldsSchema(): z.ZodObject<Properties<AdditionalEntityFields>> {
   return z.object<Properties<AdditionalEntityFields>>({
     path: z.string().nullish(),
-    type: z.string().nullish(),
-  });
+    type: z.string().nullish()
+  })
 }
 
+
 export type ActivityInDb = {
-  _id: string;
-  payload?: Maybe<Record<string | number, any>>;
-  type: string;
-  user: User;
-  createdAt: Date;
-  updatedAt?: Maybe<Date>;
+  _id: string,
+  payload?: Maybe<Record<string | number, any>>,
+  type: string,
+  user: User,
+  createdAt: Date,
+  updatedAt?: Maybe<Date>,
 };
 
 export type LogInActivityInDb = {
-  _id: string;
-  timestamp: Date;
-  userId: string;
-  createdAt: Date;
-  updatedAt?: Maybe<Date>;
+  _id: string,
+  timestamp: Date,
+  userId: string,
+  createdAt: Date,
+  updatedAt?: Maybe<Date>,
 };
 
 export type PostInDb = {
-  _id: string;
-  content: string;
-  creator: User;
-  likes?: Maybe<Array<User>>;
-  createdAt: Date;
-  updatedAt?: Maybe<Date>;
+  _id: string,
+  content: string,
+  creator: User,
+  likes?: Maybe<Array<User>>,
+  createdAt: Date,
+  updatedAt?: Maybe<Date>,
 };
 
 export type UserInDb = {
-  _id: string;
-  about?: Maybe<string>;
-  dateOfBirth: Date;
-  firebaseUserId: string;
-  firstName: string;
-  friends?: Maybe<Array<User>>;
-  lastName: string;
-  phoneNumber: PhoneNumber;
-  posts?: Maybe<Array<Post>>;
-  profileImage?: Maybe<string>;
-  userName: string;
-  verification: UserVerification;
-  createdAt: Date;
-  updatedAt?: Maybe<Date>;
-  password: string;
+  _id: string,
+  about?: Maybe<string>,
+  firebaseUserId: string,
+  firstName: string,
+  friends?: Maybe<Array<User>>,
+  lastName: string,
+  phoneNumber: PhoneNumber,
+  posts?: Maybe<Array<Post>>,
+  profileImage?: Maybe<string>,
+  userName: string,
+  verification: UserVerification,
+  createdAt: Date,
+  updatedAt?: Maybe<Date>,
+  password: string,
 };
 
 /**
@@ -790,7 +684,6 @@ export type UserInDb = {
 
 /**
  * @typedef {Object} SignUpInput
- * @property {string} dateOfBirth
  * @property {string} firebaseUserId
  * @property {string} firstName
  * @property {string} lastName
@@ -817,7 +710,6 @@ export type UserInDb = {
  * @typedef {Object} User
  * @property {string} _id
  * @property {string} [about]
- * @property {DateTime} dateOfBirth
  * @property {string} firebaseUserId
  * @property {string} firstName
  * @property {Array<User>} [friends]

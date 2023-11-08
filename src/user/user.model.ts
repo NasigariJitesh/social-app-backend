@@ -221,7 +221,6 @@ const signUp = async (signUpInput: SignUpInput) => {
     password: hashedPassword,
     _id: new ObjectId().toString(),
     createdAt: new Date(),
-    dateOfBirth: new Date(input.dateOfBirth),
     verification: {
       phoneNumber: !!input.firebaseUserId,
     },
