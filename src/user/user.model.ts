@@ -223,7 +223,7 @@ const signUp = async (signUpInput: SignUpInput) => {
     createdAt: new Date(),
     dateOfBirth: new Date(input.dateOfBirth),
     verification: {
-      phoneNumber: false,
+      phoneNumber: !!input.firebaseUserId,
     },
   };
 

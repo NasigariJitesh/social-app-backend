@@ -25,6 +25,7 @@ type User
   phoneNumber: PhoneNumber! @column
   verification: UserVerification! @column
   firebaseUserId: String! @column
+  about: String @column
   posts: [Post!] @column
   notifications: [Activity!]
 }
